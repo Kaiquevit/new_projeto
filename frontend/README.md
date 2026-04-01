@@ -1,16 +1,55 @@
-# 📌 Sistema de Lista - Projeto Fullstack
+# 📋 Sistema de Lista de Tarefas
 
-Este projeto foi desenvolvido como trabalho final com foco em aplicação profissional.
-
-Trata-se de um sistema de lista, onde o usuário pode gerenciar informações de forma dinâmica, utilizando uma aplicação completa com integração entre frontend, backend e banco de dados.
+Projeto full stack desenvolvido com **React + Node.js + MySQL**, com autenticação de usuários e gerenciamento de tarefas.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Funcionalidades
 
-- Frontend: React
-- Backend: Node.js / Express
-- Banco de Dados: (MySQL)
-- Axios para comunicação entre front e back
+- 🔐 Cadastro de usuário
+- 🔑 Login com autenticação JWT
+- ➕ Adicionar tarefas
+- 📋 Listar tarefas
+- ✏️ Editar tarefas
+- ❌ Deletar tarefas
+- ✅ Marcar como completa
+- 🔎 Filtro por:
+  - Todas
+  - Ativas
+  - Completas
 
 ---
+
+## 🛠️ Tecnologias utilizadas
+
+### Frontend
+- React.js
+- Axios
+- CSS
+
+### Backend
+- Node.js
+- Express
+- MySQL
+- JWT (jsonwebtoken)
+- bcrypt
+
+---
+
+## 📁 Estrutura do banco de dados
+
+CREATE TABLE login (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  senha VARCHAR(255)
+);
+
+CREATE TABLE lista (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  task VARCHAR(255),
+  status VARCHAR(20) DEFAULT 'ativa',
+  user_id INT,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
