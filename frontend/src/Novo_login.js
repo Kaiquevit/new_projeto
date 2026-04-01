@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import './Novo_login.css'
+import { useNavigate } from 'react-router-dom'
 function Novo_login() {
 
   const [values, setValues] = useState({
@@ -8,7 +9,7 @@ function Novo_login() {
     email: '',
     senha: ''
   })
-
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
 
   const [message, setMessage] = useState("")
@@ -31,76 +32,47 @@ function Novo_login() {
       })
       .catch(err => {
         setMessage("")
-
-        if (err.response && err.response.data.error) {
-          setErrorMessage(err.response.data.error)
-        } else {
-          setErrorMessage("Erro ao cadastrar")
-        }
+        setErrorMessage(err.response?.data?.error || "Erro ao cadastrar")
       })
   }
 
   return (
-    <div 
-      className="d-flex justify-content-center align-items-center vh-100"
-      style={{ background: "linear-gradient(135deg, #000000, #1a1a1a)" }}
-    >
-      <form 
-        onSubmit={handleSubmit}
-        className="p-4 w-25"
-        style={{
-          background: "rgba(255,255,255,0.08)",
-          backdropFilter: "blur(10px)",
-          borderRadius: "12px",
-          border: "1px solid rgba(255,255,255,0.2)",
-          color: "white"
-        }}
-      >
+    <div className="register-container">
 
-        <h3 className="text-center mb-4">Cadastro</h3>
+      <form onSubmit={handleSubmit} className="register-box">
 
-        {message && (
-          <div className="text-center mb-3">
-            <small style={{ color: "lightgreen" }}>{message}</small>
-          </div>
-        )}
+        <h3>Cadastro</h3>
 
-        {errorMessage && (
-          <div className="text-center mb-3">
-            <small style={{ color: "red" }}>{errorMessage}</small>
-          </div>
-        )}
+        {message && <p className="msg-success">{message}</p>}
+        {errorMessage && <p className="msg-error">{errorMessage}</p>}
 
-        <div className="mb-3">
+        <div>
           <label>Nome</label>
           <input
             type="text"
             name="nome"
-            className="form-control"
             onChange={handleInput}
           />
         </div>
 
-        <div className="mb-3">
+        <div>
           <label>Email</label>
           <input
             type="email"
             name="email"
-            className="form-control"
             onChange={handleInput}
           />
         </div>
 
-        <div className="mb-3">
+        <div>
           <label>Senha</label>
 
           <div style={{ position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
               name="senha"
-              className="form-control"
               onChange={handleInput}
-              style={{ paddingRight: "45px" }}
+              style={{ paddingRight: "40px" }}
             />
 
             <span
@@ -130,13 +102,20 @@ function Novo_login() {
               )}
             </span>
           </div>
-
         </div>
 
-        <button className="btn btn-primary w-100">
-          Cadastrar
-        </button>
+       <button type="submit">
+  Cadastrar
+</button>
 
+<button 
+  type="button"
+  className="btn-login"
+  onClick={() => navigate('/')}
+>
+  Entrar
+</button>
+              
       </form>
     </div>
   )

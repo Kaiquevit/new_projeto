@@ -1,0 +1,97 @@
+/* container */
+.register-container {
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* box */
+.register-box {
+  width: 100%;
+  max-width: 400px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+
+  padding: 30px;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* título */
+.register-box h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* inputs */
+.register-box input {
+  width: 100%;
+  padding: 10px;
+
+  border-radius: 6px;
+  border: none;
+  outline: none;
+
+  margin-top: 5px;
+}
+
+/* 🔥 BOTÃO PADRÃO (Cadastrar) */
+.register-box button:not(.btn-login) {
+  background: #3b82f6;
+  color: white;
+
+  border: none;
+  padding: 10px;
+
+  border-radius: 6px;
+  cursor: pointer;
+
+  margin-top: 10px;
+}
+
+/* 🔥 BOTÃO ENTRAR */
+.btn-login {
+  background: #22c55e;
+  color: white;
+
+  border: none;
+  padding: 10px;
+
+  border-radius: 6px;
+  cursor: pointer;
+
+  margin-top: 8px;
+}
+
+/* mensagens */
+.msg-success {
+  color: lightgreen;
+  text-align: center;
+}
+
+.msg-error {
+  color: red;
+  text-align: center;
+}
+
+/* 🔥 RESPONSIVO */
+@media (max-width: 480px) {
+  .register-box {
+    padding: 20px;
+  }
+
+  .register-box h3 {
+    font-size: 20px;
+  }
+}
