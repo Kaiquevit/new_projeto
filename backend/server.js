@@ -21,9 +21,9 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    console.log("❌ Erro ao conectar no banco");
+    console.log(" Erro ao conectar no banco");
   } else {
-    console.log("✅ Conectado ao MySQL");
+    console.log(" Conectado ao MySQL");
   }
 });
 
